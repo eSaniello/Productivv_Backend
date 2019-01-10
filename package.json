@@ -2,7 +2,7 @@
   "name": "productivv_backend",
   "version": "1.0.0",
   "description": "Backend REST-API for the productivv app.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
