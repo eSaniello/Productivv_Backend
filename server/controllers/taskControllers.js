@@ -2,7 +2,7 @@ const sequelize = require('sequelize');
 const dbConfig = require('../config/config');
 const connection = new sequelize(dbConfig[process.env.ENVIRONMENT || 'development']);
 
-const gebruikers_model = require('./userControllers');
+// const gebruikers_model = require('./userControllers');
 
 const taken = connection.define('taken', {
     taak_id: {
@@ -20,14 +20,9 @@ const taken = connection.define('taken', {
     categorie: sequelize.STRING
 })
 
-taken.belongsTo(gebruikers_model, {
-    foreignKey: 'gebruikers_id',
-    targetKey: 'gebruikers_id'
-});
-
 //CREATE
 function Create(){
-    taken.create
+
 }
 
 module.exports = {
