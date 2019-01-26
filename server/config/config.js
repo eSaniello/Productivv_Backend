@@ -1,4 +1,4 @@
-const dbConfig = {
+const db = {
     development: {
         host: 'localhost',
         username: 'root',
@@ -21,4 +21,4 @@ const dbConfig = {
     }
 }
 
-module.exports = dbConfig;
+module.exports = db;

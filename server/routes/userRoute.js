@@ -1,11 +1,9 @@
-const userControllers = require('../controllers/userControllers');
+module.exports = (app) => {
+    const userController = require('../controllers/userController');
 
-function UserRoute(app){
-    app.post('/gebruikers', userControllers.Create);
-    app.get('/gebruikers', userControllers.SelectAll);
-    app.get('/gebruikers/:gebruikers_id', userControllers.SelectOne);
-    app.patch('/gebruikers', userControllers.Update);
-    app.delete('/gebruikers', userControllers.DeleteOne);
+    app.post('/gebruikers/create', userController.createUser);
+    app.get('/gebruikers', userController.findAll);
+    app.get('/gebruikers/:gebruikers_naam', userController.findOne);
+    app.patch('/gebruikers', userController.update);
+    app.delete('/gebruikers', userController.deleteOne);
 }
-
-module.exports = { UserRoute }; 

@@ -4,13 +4,21 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+
+const db = require('./server/config/dbConfig');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
 //Remove when in production
 app.use(cors({ credentials: true, origin: true}));
 
-require('./server/routes/userRoute').UserRoute(app);
+//fore = true when you want to drop and create all the tables
+db.sequelize.sync({force: false}).then(() => {
+    console.log('Drop and Resync with { force: true }');
+  });
+
+require('./server/routes/userRoute')(app);
 
 //When route does not exist, show the requester this message
 app.get('*', (req, res) => {
