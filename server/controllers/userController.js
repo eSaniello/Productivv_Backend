@@ -17,14 +17,25 @@ exports.createUser = (req, res) => {
 
 exports.findOne = (req, res) => {
     User.findOne({
-        where: { gebruikers_naam: req.params.gebruikers_naam } 
+        where: { gebruikers_naam: req.params.gebruikers_naam },
+        include: [
+            {
+                model: Taken
+            }
+        ]
     }).then(User => res.json(User)).catch(error => {
         res.json({message: error})
     });
 }
 
 exports.findAll = (req, res) => {
-    User.findAll().then(User => res.json(User)).catch(error => {
+    User.findAll({
+        include: [
+            {
+                model: Taken
+            }
+        ]
+    }).then(User => res.json(User)).catch(error => {
         res.json({message: error})
     });
 }

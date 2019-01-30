@@ -18,7 +18,9 @@ db.sequelize.sync({force: false}).then(() => {
     console.log('Drop and Resync with { force: true }');
   });
 
+//routes
 require('./server/routes/userRoute')(app);
+require('./server/routes/taskRoute')(app);
 
 //When route does not exist, show the requester this message
 app.get('*', (req, res) => {

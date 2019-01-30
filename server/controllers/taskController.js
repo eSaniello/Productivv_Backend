@@ -10,9 +10,16 @@ exports.createTask = (req, res) => {
        prioriteit: req.body.prioriteit,
        datum_aangemaakt: Date(),
        compleet: req.body.compleet,
-       categorie: req.body.categorie
+       categorie: req.body.categorie,
+       fk_gebruikers_id: req.body.fk_gebruikers_id
     }).then(Taken => res.json(Taken)).catch(error => {
         res.json({ message: error })
+    });
+}
+
+exports.findAll = (req, res) => {
+    Taken.findAll().then(Taken => res.json(Taken)).catch(error => {
+        res.json({message: error})
     });
 }
 
@@ -20,12 +27,6 @@ exports.createTask = (req, res) => {
 //     User.findOne({
 //         where: { gebruikers_naam: req.params.gebruikers_naam } 
 //     }).then(User => res.json(User)).catch(error => {
-//         res.json({message: error})
-//     });
-// }
-
-// exports.findAll = (req, res) => {
-//     User.findAll().then(User => res.json(User)).catch(error => {
 //         res.json({message: error})
 //     });
 // }
