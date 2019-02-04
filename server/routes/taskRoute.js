@@ -3,7 +3,7 @@ module.exports = (app) => {
 
     app.post('/taken/create', taskController.createTask);
     app.get('/taken', taskController.findAll);
-    // app.get('/gebruikers/:gebruikers_naam', userController.findOne);
-    // app.patch('/gebruikers', userController.update);
-    // app.delete('/gebruikers', userController.deleteOne);
+    app.get('/taken/:taak_id', taskController.findOne);
+    app.patch('/taken', taskController.update);
+    app.delete('/taken', taskController.deleteOne);
 }

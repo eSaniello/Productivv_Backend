@@ -1,10 +1,13 @@
 const db = require('../config/dbConfig');
 const User = db.user;
 const Taken = db.taken;
+const Rooster = db.rooster;
+const Cijferlijst = db.cijferlijst;
 
 exports.createUser = (req, res) => {
     User.create({
         gebruikers_naam: req.body.gebruikers_naam,
+        profiel_foto: req.body.profiel_foto,
         voornaam: req.body.voornaam,
         achternaam: req.body.achternaam,
         email: req.body.email,
@@ -21,6 +24,12 @@ exports.findOne = (req, res) => {
         include: [
             {
                 model: Taken
+            },
+            {
+                model: Rooster
+            },
+            {
+                model: Cijferlijst
             }
         ]
     }).then(User => res.json(User)).catch(error => {
@@ -33,6 +42,12 @@ exports.findAll = (req, res) => {
         include: [
             {
                 model: Taken
+            },
+            {
+                model: Rooster
+            },
+            {
+                model: Cijferlijst
             }
         ]
     }).then(User => res.json(User)).catch(error => {
@@ -43,6 +58,7 @@ exports.findAll = (req, res) => {
 exports.update = (req, res) => {
     User.update({
         gebruikers_naam: req.body.gebruikers_naam,
+        profiel_foto: req.body.profiel_foto,
         voornaam: req.body.voornaam,
         achternaam: req.body.achternaam,
         email: req.body.email,

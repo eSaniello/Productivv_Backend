@@ -14,13 +14,15 @@ app.use(bodyParser.json());
 app.use(cors({ credentials: true, origin: true}));
 
 //fore = true when you want to drop and create all the tables
-db.sequelize.sync({force: false}).then(() => {
+db.sequelize.sync({force: true}).then(() => {
     console.log('Drop and Resync with { force: true }');
   });
 
 //routes
 require('./server/routes/userRoute')(app);
 require('./server/routes/taskRoute')(app);
+require('./server/routes/roosterRoute')(app);
+require('./server/routes/cijferlijstRoute')(app);
 
 //When route does not exist, show the requester this message
 app.get('*', (req, res) => {
