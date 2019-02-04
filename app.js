@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors({ credentials: true, origin: true}));
 
 //fore = true when you want to drop and create all the tables
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync({force: false}).then(() => {
     console.log('Drop and Resync with { force: true }');
   });
 
