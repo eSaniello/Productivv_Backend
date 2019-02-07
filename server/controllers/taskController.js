@@ -9,7 +9,7 @@ exports.createTask = (req, res) => {
        opleverings_datum: req.body.opleverings_datum,
        prioriteit: req.body.prioriteit,
        datum_aangemaakt: Date(),
-       compleet: req.body.compleet,
+       compleet: false,
        categorie: req.body.categorie,
        fk_gebruikers_id: req.body.fk_gebruikers_id
     }).then(Taken => res.json(Taken)).catch(error => {
@@ -37,7 +37,7 @@ exports.update = (req, res) => {
         omschrijving: req.body.omschrijving,
         opleverings_datum: req.body.opleverings_datum,
         prioriteit: req.body.prioriteit,
-        compleet: req.body/compleet,
+        compleet: req.body.compleet,
         categorie: req.body.categorie
     },{
         where: {taak_id : req.body.taak_id}
