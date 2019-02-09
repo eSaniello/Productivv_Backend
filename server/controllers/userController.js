@@ -7,7 +7,6 @@ const Cijferlijst = db.cijferlijst;
 exports.createUser = (req, res) => {
     User.create({
         gebruikers_naam: req.body.gebruikers_naam,
-        profiel_foto: req.body.profiel_foto,
         voornaam: req.body.voornaam,
         achternaam: req.body.achternaam,
         email: req.body.email,
@@ -58,7 +57,6 @@ exports.findAll = (req, res) => {
 exports.update = (req, res) => {
     User.update({
         gebruikers_naam: req.body.gebruikers_naam,
-        profiel_foto: req.body.profiel_foto,
         voornaam: req.body.voornaam,
         achternaam: req.body.achternaam,
         email: req.body.email,

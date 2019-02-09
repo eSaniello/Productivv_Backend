@@ -9,7 +9,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             unique: true
         },
-        profiel_foto: Sequelize.BLOB,
         voornaam: Sequelize.STRING,
         achternaam: Sequelize.STRING,
         email: Sequelize.STRING,
