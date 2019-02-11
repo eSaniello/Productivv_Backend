@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         titel: Sequelize.STRING,
         omschrijving: Sequelize.STRING,
-        opleverings_datum: Sequelize.DATE,
+        opleverings_datum: Sequelize.DATEONLY,
         prioriteit: Sequelize.STRING,
         datum_aangemaakt: Sequelize.DATE,
         compleet: Sequelize.BOOLEAN,
