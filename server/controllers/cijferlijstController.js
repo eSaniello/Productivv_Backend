@@ -11,21 +11,29 @@ exports.create = (req, res) => {
         periode_4: req.body.periode_4,
         fk_gebruikers_id: req.body.fk_gebruikers_id
     }).then(Cijferlijst => res.json(Cijferlijst)).catch(error => {
-        res.json({ message: error })
+        res.json({
+            message: error
+        })
     });
 }
 
 exports.findAll = (req, res) => {
     Cijferlijst.findAll().then(Cijferlijst => res.json(Cijferlijst)).catch(error => {
-        res.json({message: error})
+        res.json({
+            message: error
+        })
     });
 }
 
 exports.findOne = (req, res) => {
     Cijferlijst.findOne({
-        where: { cijferlijst_id: req.params.cijferlijst_id } 
+        where: {
+            cijferlijst_id: req.params.cijferlijst_id
+        }
     }).then(Cijferlijst => res.json(Cijferlijst)).catch(error => {
-        res.json({message: error})
+        res.json({
+            message: error
+        })
     });
 }
 
@@ -36,23 +44,33 @@ exports.update = (req, res) => {
         periode_2: req.body.periode_2,
         periode_3: req.body.periode_3,
         periode_4: req.body.periode_4,
-    },{
-        where: {cijferlijst_id : req.body.cijferlijst_id}
+    }, {
+        where: {
+            cijferlijst_id: req.body.cijferlijst_id
+        }
     }).then(Cijferlijst => res.json(Cijferlijst)).catch(error => {
-        res.json({message: error})
+        res.json({
+            message: error
+        })
     });
 }
 
 exports.deleteOne = (req, res) => {
     Cijferlijst.destroy({
-        where: {cijferlijst_id: req.body.cijferlijst_id}
+        where: {
+            cijferlijst_id: req.body.cijferlijst_id
+        }
     }).then(Cijferlijst => res.json(Cijferlijst)).catch(error => {
-        res.json({message: error})
+        res.json({
+            message: error
+        })
     });
 }
 
 exports.deleteAll = (req, res) => {
     Cijferlijst.destroy().then(Cijferlijst => res.json(Cijferlijst)).catch(error => {
-        res.json({message: error})
+        res.json({
+            message: error
+        })
     })
 }

@@ -12,6 +12,7 @@ db.taken = require('../models/taskModel.js')(sequelize, Sequelize);
 db.rooster = require('../models/roosterModel.js')(sequelize, Sequelize);
 db.cijferlijst = require('../models/cijferlijstModel')(sequelize, Sequelize);
 
+//table relations
 db.user.hasMany(db.taken, {foreignKey: 'fk_gebruikers_id', sourceKey: 'gebruikers_id'});
 db.user.hasMany(db.rooster, {foreignKey: 'fk_gebruikers_id', sourceKey: 'gebruikers_id'});
 db.user.hasMany(db.cijferlijst, {foreignKey: 'fk_gebruikers_id', sourceKey: 'gebruikers_id'});

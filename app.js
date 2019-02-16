@@ -11,12 +11,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 //Remove when in production
-app.use(cors({ credentials: true, origin: true}));
+app.use(cors({
+    credentials: true,
+    origin: true
+}));
 
 //fore = true when you want to drop and create all the tables
-db.sequelize.sync({force: false}).then(() => {
+db.sequelize.sync({
+    force: false
+}).then(() => {
     console.log('Drop and Resync with { force: true }');
-  });
+});
 
 //routes
 require('./server/routes/userRoute')(app);

@@ -1,20 +1,20 @@
 const db = {
     development: {
         host: 'localhost',
-        username: 'root',
-        password: "",
+        username: 'postgres',
+        password: "dzdvml114",
         database: 'productivv',
-        dialect: 'mysql',
+        dialect: 'postgres',
         define: {
             timestamps: false
         }
-    }, 
+    },
     production: {
         host: 'localhost',
         username: 'root',
         password: "",
         database: 'productivv',
-        dialect: 'mysql',
+        dialect: 'postgres',
         define: {
             timestamps: false
         }
