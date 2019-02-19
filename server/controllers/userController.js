@@ -102,11 +102,7 @@ exports.checkPassword = (req, res) => {
     }).then(User => {
         User.json();
         bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord).then(bcryptResult => {
-            if (bcryptResult) {
-                // res.status(200).send();
-            } else {
-                // res.status(403).send();
-            }
+            res.json(bcryptResult);
         }).catch(err => console.log(err));
     }).catch(error => {
         res.json({
