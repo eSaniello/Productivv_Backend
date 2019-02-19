@@ -104,11 +104,11 @@ exports.checkPassword = (req, res) => {
         bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord, (err, bcryptResult) => {
             if (bcryptResult) {
                 res.json({
-                    message: true
+                    message: "true"
                 });
             } else {
                 res.json({
-                    message: false
+                    message: "false"
                 });
             }
         })
