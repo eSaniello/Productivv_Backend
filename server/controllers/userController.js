@@ -1,8 +1,12 @@
 const db = require('../config/dbConfig');
+const bcrypt = require('bcrypt');
+
 const User = db.user;
 const Taken = db.taken;
 const Rooster = db.rooster;
 const Cijferlijst = db.cijferlijst;
+
+const salt = bcrypt.genSaltSync(10);
 
 exports.createUser = (req, res) => {
     User.create({
@@ -10,7 +14,7 @@ exports.createUser = (req, res) => {
         voornaam: req.body.voornaam,
         achternaam: req.body.achternaam,
         email: req.body.email,
-        wachtwoord: req.body.wachtwoord,
+        wachtwoord: bcrypt.hashSync(req.body.wachtwoord, salt),
         datum_aangemaakt: Date()
     }).then(User => res.json(User)).catch(error => {
         res.json({
@@ -66,7 +70,7 @@ exports.update = (req, res) => {
         voornaam: req.body.voornaam,
         achternaam: req.body.achternaam,
         email: req.body.email,
-        wachtwoord: req.body.wachtwoord
+        wachtwoord: bcrypt.hashSync(req.body.wachtwoord, salt)
     }, {
         where: {
             gebruikers_id: req.body.gebruikers_id
