@@ -103,13 +103,13 @@ exports.checkPassword = (req, res) => {
         User.json();
         bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord).then(bcryptResult => {
             if (bcryptResult) {
-                res.json({
-                    bcryptResult
+                res.status(200).send({
+                    message: "good"
                 });
             } else {
-                res.json({
-                    message: "pw doesntmacth"
-                })
+                res.status(403).send({
+                    message: "bad"
+                });
             }
         }).catch(err => console.log(err));
     }).catch(error => {
