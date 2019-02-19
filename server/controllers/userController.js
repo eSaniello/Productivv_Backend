@@ -108,7 +108,7 @@ exports.checkPassword = (req, res) => {
                 });
             } else {
                 res.json({
-                    message: "false"
+                    message: err
                 });
             }
         })
