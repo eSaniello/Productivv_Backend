@@ -6,5 +6,5 @@ module.exports = (app) => {
     app.get('/gebruikers/:gebruikers_naam', userController.findOne);
     app.patch('/gebruikers', userController.update);
     app.delete('/gebruikers', userController.deleteOne);
-    app.post('/gebruikers/:gebruikers_naam/check_password', userController.checkPassword);
+    app.get('/gebruikers/:gebruikers_naam/check_password', userController.checkPassword);
 }

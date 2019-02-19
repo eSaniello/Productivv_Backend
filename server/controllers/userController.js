@@ -100,13 +100,14 @@ exports.checkPassword = (req, res) => {
             gebruikers_naam: req.params.gebruikers_naam
         }
     }).then(User => {
-        bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord, (err, bcryptResult) => {
-            if (bcryptResult) {
-                res.json(true);
-            } else {
-                res.json(false);
-            }
-        })
+        res.json(User);
+        // bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord, (err, bcryptResult) => {
+        //     if (bcryptResult) {
+        //         res.json(true);
+        //     } else {
+        //         res.json(false);
+        //     }
+        // })
     }).catch(error => {
         res.json({
             message: error
