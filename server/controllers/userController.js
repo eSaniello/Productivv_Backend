@@ -97,7 +97,7 @@ exports.deleteOne = (req, res) => {
 exports.checkPassword = (req, res) => {
     User.findOne({
         where: {
-            gebruikers_naam: req.params.gebruikers_naam
+            gebruikers_naam: req.body.gebruikers_naam
         }
     }).then(User => {
         bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord, (err, bcryptResult) => {
