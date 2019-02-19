@@ -97,21 +97,21 @@ exports.deleteOne = (req, res) => {
 exports.checkPassword = (req, res) => {
     User.findOne({
         where: {
-            gebruikers_naam: req.body.gebruikers_naam
+            gebruikers_naam: req.params.gebruikers_naam
         }
     }).then(User => {
         User.json();
-        bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord, (err, bcryptResult) => {
+        bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord).then(bcryptResult => {
             if (bcryptResult) {
                 res.json({
-                    message: "true"
+                    bcryptResult
                 });
             } else {
                 res.json({
-                    message: "false"
-                });
+                    message: "pw doesntmacth"
+                })
             }
-        })
+        }).catch(err => console.log(err));
     }).catch(error => {
         res.json({
             message: error
