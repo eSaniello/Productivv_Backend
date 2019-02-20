@@ -4,6 +4,6 @@ module.exports = (app) => {
     app.post('/taken/create', taskController.createTask);
     app.get('/taken', taskController.findAll);
     app.get('/taken/:taak_id', taskController.findOne);
-    app.patch('/taken', taskController.update);
+    app.put('/taken', taskController.update);
     app.delete('/taken', taskController.deleteOne);
 }

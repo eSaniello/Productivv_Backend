@@ -95,26 +95,28 @@ exports.deleteOne = (req, res) => {
 }
 
 exports.checkPassword = (req, res) => {
-    User.findOne({
+    User.findAll({
         where: {
-            gebruikers_naam: req.params.gebruikers_naam
+            gebruikers_naam: req.body.gebruikers_naam,
+            active: 1
         }
-    }).then(User => {
-        User.json();
-        bcrypt.compareSync(req.body.wachtwoord, User.wachtwoord, (err, bcryptResult) => {
-            if (bcryptResult) {
-                res.send({
-                    message: "haha"
-                })
-            } else {
-                res.send({
-                    message: "hihi"
-                })
-            }
-        })
-    }).catch(error => {
-        res.json({
-            message: error
-        })
-    })
+    }).then(user => {
+        if (user[0]) {
+            bcrypt.compare(req.body.wachtwoord, user[0].wachtwoord, (err, bcryptResult) => {
+                if (bcryptResult) {
+                    res.json({
+                        message: "match"
+                    });
+                } else {
+                    res.json({
+                        message: "match"
+                    });
+                }
+            })
+        } else {
+            res.json({
+                message: "user not found"
+            });
+        }
+    }).catch(e => res.json({message: e}));
 }

@@ -4,7 +4,7 @@ module.exports = (app) => {
     app.post('/gebruikers/create', userController.createUser);
     app.get('/gebruikers', userController.findAll);
     app.get('/gebruikers/:gebruikers_naam', userController.findOne);
-    app.patch('/gebruikers', userController.update);
+    app.put('/gebruikers', userController.update);
     app.delete('/gebruikers', userController.deleteOne);
-    app.post('/gebruikers/:gebruikers_naam/check_password', userController.checkPassword);
+    app.post('/gebruikers/check_password', userController.checkPassword);
 }
