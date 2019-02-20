@@ -97,8 +97,7 @@ exports.deleteOne = (req, res) => {
 exports.checkPassword = (req, res) => {
     User.findAll({
         where: {
-            gebruikers_naam: req.body.gebruikers_naam,
-            active: 1
+            gebruikers_naam: req.body.gebruikers_naam
         }
     }).then(user => {
         if (user[0]) {
