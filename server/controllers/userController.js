@@ -110,7 +110,7 @@ exports.checkPassword = (req, res) => {
             })
         } else {
             res.json({
-                message: "user not found"
+                message: "User not found"
             });
         }
     }).catch(e => res.json({message: e}));
