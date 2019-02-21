@@ -132,6 +132,7 @@ exports.forgotPassword = (req, res) => {
             let transporter = nodemailer.createTransport({    
                 host: 'smtp.gmail.com',
                 port: 465,
+                secure: true,
                 auth: {
                   user: 'shaniel29samadhan@gmail.com', // generated ethereal user
                   pass: 'shaniel132435' // generated ethereal password
