@@ -145,9 +145,16 @@ exports.forgotPassword = (req, res) => {
             };
 
             smtpTransport.sendMail(mailOptions, function (err) {
-                res.json({
-                    message: 'An e-mail has been sent to ' + user[0].email + ' with further instructions.'
-                })
+                if(!err){
+                    res.json({
+                        message: 'An e-mail has been sent to ' + user[0].email + ' with further instructions.'
+                    })
+                }
+                else{
+                    res.json({
+                        message: err
+                    })
+                }
             });
 
         } else {
