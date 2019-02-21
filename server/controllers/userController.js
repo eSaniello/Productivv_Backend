@@ -1,6 +1,7 @@
 const db = require('../config/dbConfig');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 const User = db.user;
 const Taken = db.taken;
