@@ -139,7 +139,7 @@ exports.forgotPassword = (req, res) => {
 
               let mailOptions = {
                 from: 'shaniel29samadhan@gmail.com', // sender address
-                to: "shaniel29samadhan@gmail.com", // list of receivers
+                to: "shaniel.samadhan.natin@gmail.com", // list of receivers
                 subject: "Hello ✔", // Subject line
                 text: "Hello world?", // plain text body
                 html: "<b>Hello world?</b>" // html body
