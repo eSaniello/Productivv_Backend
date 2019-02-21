@@ -129,33 +129,23 @@ exports.forgotPassword = (req, res) => {
     }).then(user => {
         if (user[0]) {
 
-            const smtpTransport = nodemailer.createTransport('SMTP', {
-                service: 'SendGrid',
+            let transporter = nodemailer.createTransport({
+                host: "'smtp.sendgrid.net'",
                 auth: {
-                    user: 'shaniel',
-                    pass: 'vduHMhjD5rfdRLe'
+                  user: 'shaniel', // generated ethereal user
+                  pass: 'xxP8bxKibXRTTcr' // generated ethereal password
                 }
-            });
+              });
 
-            const mailOptions = {
-                to: 'shaniel29samadhan@gmail.com',
-                from: 'passwordreset@productivv.com',
-                subject: 'Productivv Password Reset',
-                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-            };
+              let mailOptions = {
+                from: 'shaniel29samadhan@gmail.com', // sender address
+                to: "shaniel29samadhan@gmail.com", // list of receivers
+                subject: "Hello ✔", // Subject line
+                text: "Hello world?", // plain text body
+                html: "<b>Hello world?</b>" // html body
+              };
 
-            smtpTransport.sendMail(mailOptions, function (err) {
-                if (!err) {
-                    res.json({
-                        message: 'An e-mail has been sent to ' + user[0].email + ' with further instructions.'
-                    })
-                } else {
-                    res.json({
-                        message: err
-                    })
-                }
-            });
+            transporter.sendMail(mailOptions);
 
         } else {
             res.json({
