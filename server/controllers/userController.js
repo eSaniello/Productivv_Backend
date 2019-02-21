@@ -129,11 +129,12 @@ exports.forgotPassword = (req, res) => {
     }).then(user => {
         if (user[0]) {
 
-            let transporter = nodemailer.createTransport({
-                host: "'smtp.sendgrid.net'",
+            let transporter = nodemailer.createTransport({    
+                host: 'smtp.gmail.com',
+                port: 465,
                 auth: {
-                  user: 'shaniel', // generated ethereal user
-                  pass: 'xxP8bxKibXRTTcr' // generated ethereal password
+                  user: 'shaniel29samadhan@gmail.com', // generated ethereal user
+                  pass: 'shaniel132435' // generated ethereal password
                 }
               });
 
