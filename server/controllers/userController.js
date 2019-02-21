@@ -121,20 +121,43 @@ exports.checkPassword = (req, res) => {
 }
 
 exports.forgotPassword = (req, res) => {
+    User.findAll({
+        where: {
+            gebruikers_naam: req.body.gebruikers_naam
+        }
+    }).then(user => {
+        if (user[0]) {
 
-    const mailOptions = {
-        to: User.email,
-        from: 'passwordreset@productivv.com',
-        subject: 'Productivv Password Reset',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-            'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-    };
+            const smtpTransport = nodemailer.createTransport('SMTP', {
+                service: 'SendGrid',
+                auth: {
+                    user: 'shaniel',
+                    pass: 'vduHMhjD5rfdRLe'
+                }
+            });
 
-    smtpTransport.sendMail(mailOptions, function (err) {
-        res.json({
-            message: 'An e-mail has been sent to ' + User.email + ' with further instructions.'
-        })
-    });
+            const mailOptions = {
+                to: user[0].email,
+                from: 'passwordreset@productivv.com',
+                subject: 'Productivv Password Reset',
+                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            };
+
+            smtpTransport.sendMail(mailOptions, function (err) {
+                res.json({
+                    message: 'An e-mail has been sent to ' + user[0].email + ' with further instructions.'
+                })
+            });
+
+        } else {
+            res.json({
+                message: "User not found"
+            });
+        }
+    }).catch(e => res.json({
+        message: e
+    }));
+
+
 }

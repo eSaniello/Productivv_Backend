@@ -7,5 +7,5 @@ module.exports = (app) => {
     app.put('/gebruikers', userController.update);
     app.delete('/gebruikers', userController.deleteOne);
     app.post('/gebruikers/check_password', userController.checkPassword);
-    app.put('/gebruikers/forgot_password', userController.forgotPassword);
+    app.post('/gebruikers/forgot_password', userController.forgotPassword);
 }
