@@ -138,7 +138,7 @@ exports.forgotPassword = (req, res) => {
             });
 
             const mailOptions = {
-                to: user[0].email,
+                to: 'shaniel29samadhan@gmail.com',
                 from: 'passwordreset@productivv.com',
                 subject: 'Productivv Password Reset',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
@@ -146,12 +146,11 @@ exports.forgotPassword = (req, res) => {
             };
 
             smtpTransport.sendMail(mailOptions, function (err) {
-                if(!err){
+                if (!err) {
                     res.json({
                         message: 'An e-mail has been sent to ' + user[0].email + ' with further instructions.'
                     })
-                }
-                else{
+                } else {
                     res.json({
                         message: err
                     })
