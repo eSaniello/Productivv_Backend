@@ -18,7 +18,7 @@ app.use(cors({
 
 //fore = true when you want to drop and create all the tables
 db.sequelize.sync({
-    force: false
+    force: true
 }).then(() => {
     console.log('Drop and Resync with { force: true }');
 });
