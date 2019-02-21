@@ -146,7 +146,7 @@ exports.forgotPassword = (req, res) => {
               };
 
             transporter.sendMail(mailOptions);
-
+              res.json(user[0]);
         } else {
             res.json({
                 message: "User not found"
