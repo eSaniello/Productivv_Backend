@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
         achternaam: Sequelize.STRING,
         email: Sequelize.STRING,
         wachtwoord: Sequelize.STRING,
-        datum_aangemaakt: Sequelize.DATE
+        resetPasswordToken: Sequelize.STRING
     });
 
     return Gebruikers;
